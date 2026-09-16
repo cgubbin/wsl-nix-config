@@ -45,7 +45,7 @@ in {
   };
 
   flake.nixosConfigurations."work" = inputs.starter.lib.mkNixos {
-    inherit self;
+    inherit self inputs;
     hostname = "work";
     platform = "wsl"; # or native
   };
