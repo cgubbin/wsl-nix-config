@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   flake-file.inputs.nixvim = {
     url = "github:nix-community/nixvim";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +17,7 @@
       isNormalUser = true;
       group = "kit";
       extraGroups = ["wheel"];
+      shell = pkgs.fish;
     };
     users.groups."kit" = {};
 

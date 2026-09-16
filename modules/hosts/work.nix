@@ -47,6 +47,8 @@ in {
         network.hostname = "work";
       };
     };
+
+    programs.fish.enable = true;
   };
 
   flake.nixosConfigurations."work" = inputs.starter.lib.mkNixos {
