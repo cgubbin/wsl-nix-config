@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./completion.nix
     ./keymappings.nix
     ./options.nix

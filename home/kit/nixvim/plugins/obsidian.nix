@@ -62,7 +62,6 @@
 
         completion = {
           min_chars = 2;
-          nvim_cmp = true;
         };
 
         new_notes_location = "notes_subdir";

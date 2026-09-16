@@ -25,7 +25,12 @@ in {
     home-manager.users.kit.home.stateVersion = "26.05";
     networking.hostName = "work";
 
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) ["terraform"];
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+        "obsidian"
+        "terraform"
+        "wezterm.nvim"
+      ];
     home-manager.useGlobalPkgs = true; # makes home-manager use the system's pkgs, config included
 
     home-manager.sharedModules = [
