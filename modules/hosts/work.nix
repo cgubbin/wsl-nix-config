@@ -23,6 +23,7 @@ in {
     ];
     system.stateVersion = "26.05"; # set once, at first install — never bump this later
     home-manager.users.kit.home.stateVersion = "26.05";
+    networking.hostName = "work";
 
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) ["terraform"];
     home-manager.useGlobalPkgs = true; # makes home-manager use the system's pkgs, config included
@@ -35,6 +36,12 @@ in {
         }
       )
     ];
+
+    wsl = {
+      wslConf = {
+        network.hostname = "work";
+      };
+    };
   };
 
   flake.nixosConfigurations."work" = inputs.starter.lib.mkNixos {

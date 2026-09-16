@@ -15,6 +15,10 @@
       flake = false;
     };
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     starter.url = "github:cgubbin/nix-dendritic";
   };
 }
