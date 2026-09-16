@@ -9,12 +9,12 @@
       imports = [inputs.self.modules.homeManager."kit"];
     };
 
-    users.users."kit" = {pkgs, ...}: {
+    users.users."kit" = {
       isNormalUser = true;
       group = "kit";
       extraGroups = ["wheel"];
-      shell = pkgs.fish;
     };
+
     users.groups."kit" = {};
 
     wsl = {
