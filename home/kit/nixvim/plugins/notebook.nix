@@ -32,6 +32,15 @@ in {
         };
       };
 
+      jupytext = {
+        enable = true;
+        settings = {
+          force_ft = null;
+          output_extension = "auto";
+          style = "hydrogen";
+        };
+      };
+
       molten = {
         enable = true;
         autoLoad = true;

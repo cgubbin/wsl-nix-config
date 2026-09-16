@@ -29,6 +29,7 @@ in {
       builtins.elem (inputs.nixpkgs.lib.getName pkg) [
         "obsidian"
         "terraform"
+        "jupytext.nvim"
         "wezterm.nvim"
       ];
     home-manager.useGlobalPkgs = true; # makes home-manager use the system's pkgs, config included
