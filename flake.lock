@@ -449,11 +449,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1789557505,
-        "narHash": "sha256-OCBjHeshJQ8Z6bGIQ5qMwy7UioZdYvK31PiRH/6JnKE=",
+        "lastModified": 1789576389,
+        "narHash": "sha256-XxIcBzDsCR5mLv8gXuoEOVprqrqu+jb55K5/DGMRZh0=",
         "owner": "cgubbin",
         "repo": "nix-dendritic",
-        "rev": "80d0b33741b817df25d5ae56362cf3288ca2584d",
+        "rev": "ad637ac15c6a86ff51edc03db84e3ab68bb68bdb",
         "type": "github"
       },
       "original": {
