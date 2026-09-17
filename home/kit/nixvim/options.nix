@@ -8,8 +8,8 @@
       # Lua config
       "lua/kit/functions/utils.lua".source = ./lua/kit/functions/utils.lua;
       "lua/kit/functions/init.lua".source = ./lua/kit/functions/init.lua;
-      # Treesitter queries
-      "after/queries/ecma/textobjects.scm".source = ./after/queries/ecma/textobjects.scm;
+      # Treesitter queries in markdown
+      "after/queries/markdown/textobjects.scm".source = ./after/queries/ecma/textobjects.scm;
 
       # Markdown snippets
       "LuaSnip/markdown/utils/conditions.lua".source = ./snippets/markdown/utils/conditions.lua;

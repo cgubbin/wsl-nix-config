@@ -35,9 +35,9 @@ in {
       jupytext = {
         enable = true;
         settings = {
-          force_ft = null;
-          output_extension = "auto";
-          style = "hydrogen";
+          force_ft = "markdown";
+          output_extension = "md";
+          style = "markdown";
         };
       };
 
