@@ -2,7 +2,7 @@
   programs.awscli = {
     settings = {
       default = {
-        region = "eu-west-1";
+        region = "lon1";
         output = "json";
       };
     };
