@@ -43,6 +43,7 @@ in {
       (
         {config, ...}: {
           sops.secrets."netrc".path = "${config.home.homeDirectory}/.netrc";
+          sops.secrets."aws-credentials".path = "${config.home.homeDirectory}/.aws/credentials";
         }
       )
     ];
