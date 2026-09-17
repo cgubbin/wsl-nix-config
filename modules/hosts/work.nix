@@ -29,6 +29,11 @@ in {
       enable = true;
     };
 
+    programs.fuse = {
+      enable = true;
+      userAllowOther = true;
+    };
+
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (inputs.nixpkgs.lib.getName pkg) [
         "obsidian"
