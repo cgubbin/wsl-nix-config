@@ -45,12 +45,12 @@ in {
         enable = true;
         autoLoad = true;
         settings = {
-          auto_open_output = false;
+          auto_open_output = true;
           wrap_output = true;
           virt_text_output = true;
           virt_lines_off_by_1 = true;
           output_win_max_height = 12;
-          image_provider = "none";
+          image_provider = "image.nvim";
         };
       };
 
