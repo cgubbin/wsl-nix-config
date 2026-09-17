@@ -7,12 +7,12 @@
 }: let
   weztermMatched = pkgs.stdenv.mkDerivation rec {
     pname = "wezterm";
-    version = "20240203-110809-5046fc22";
+    version = "nightly";
     src = pkgs.fetchurl {
-      url = "https://github.com/wez/wezterm/releases/download/${version}/<exact-asset-filename>";
-      sha256 = "sha256-Az+HlnK/lRJpUSGm5UKyma1l2PaBKNCGFiaYnLECMX8=";
+      url = "https://github.com/wezterm/wezterm/releases/download/nightly/wezterm-nightly.Ubuntu24.04.deb";
+      sha256 = "sha256-AWSWdPoEzo/0JrqIIwzKKgiVatIJh+MLpqg3FZpNDBo=";
     };
-    nativeBuildInputs = [pkgs.autoPatchelfHook];
+    nativeBuildInputs = [pkgs.autoPatchelfHook pkgs.dpkg];
     buildInputs = [
       pkgs.stdenv.cc.cc.lib
       pkgs.zlib
@@ -20,16 +20,22 @@
       pkgs.openssl
       pkgs.fontconfig
       pkgs.libxkbcommon
-      pkgs.xorg.libX11
-      pkgs.xorg.libxcb
+      pkgs.libx11
+      pkgs.libxcb
+      pkgs.xcbutilimage
+      pkgs.xcbutil
+      pkgs.wayland
     ];
+    unpackPhase = ''
+      dpkg-deb -x $src .
+    '';
     installPhase = ''
       mkdir -p $out
-      cp -r . $out/
+      cp -r usr/* $out/
     '';
   };
 in {
-  environment.systemPackages = [
+  home.packages = [
     weztermMatched
   ];
 }
