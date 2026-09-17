@@ -43,7 +43,15 @@ in {
       (
         {config, ...}: {
           sops.secrets."netrc".path = "${config.home.homeDirectory}/.netrc";
-          sops.secrets."aws-credentials".path = "${config.home.homeDirectory}/.aws/credentials";
+          sops.secrets."do-spaces-credentials".path = "${config.home.homeDirectory}/.aws/credentials";
+
+          sops.secrets."do-spaces-access-key" = {};
+          sops.secrets."do-spaces-secret-key" = {};
+
+          sops.templates."do-spaces-env".content = ''
+            set -gx SPACES_KEY ${config.sops.placeholder."do-spaces-access-key"}
+            set -gx SPACES_SECRET ${config.sops.placeholder."do-spaces-secret-key"}
+          '';
         }
       )
     ];
