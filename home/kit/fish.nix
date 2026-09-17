@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -899,6 +900,7 @@
       bandwhich = lib.getExe pkgs.bandwhich;
       procs = lib.getExe pkgs.procs;
       lazygit = lib.getExe pkgs.lazygit;
+      aws = lib.getExe config.programs.awscli.package;
     in {
       which = "readlink -f (type -p $argv)";
       rebuild-dagon = "cd /home/kit/nixos-config && nixos-rebuild switch --flake .#work --target-host kit@work --use-remote-sudo --impure";
@@ -948,6 +950,12 @@
       # --- Direnv ---
       da = "direnv allow";
       dr = "direnv reload";
+
+      # --- Wave AWS ---
+      awse = "${aws} --endpoint=https://ams3.digitaloceanspaces.com";
+      awss = "${aws} --endpoint=https://ams3.digitaloceanspaces.com s3 sync s3://wavephotonics ~/s3/wavephotonics";
+      awspd = "${aws} --endpoint=https://ams3.digitaloceanspaces.com s3 sync s3://wp-projectdata ~/s3/wp-projectdata";
+      awspu = "${aws} --endpoint=https://ams3.digitaloceanspaces.com s3 sync ~/s3/wp-projectdata s3://wp-projectdata";
     };
 
     interactiveShellInit = ''
