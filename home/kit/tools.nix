@@ -67,7 +67,6 @@ in {
       clang
       gnumake
       tree-sitter
-      wezterm
     ]
   );
 }

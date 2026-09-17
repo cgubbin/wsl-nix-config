@@ -25,6 +25,10 @@ in {
     home-manager.users.kit.home.stateVersion = "26.05";
     networking.hostName = "work";
 
+    services.openssh = {
+      enable = true;
+    };
+
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (inputs.nixpkgs.lib.getName pkg) [
         "obsidian"
