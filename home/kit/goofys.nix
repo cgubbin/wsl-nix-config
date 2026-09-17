@@ -11,6 +11,7 @@
 
     Service = {
       Type = "simple";
+      Environment = "PATH=/run/wrappers/bin:/run/current-system/sw/bin";
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${config.home.homeDirectory}/s3/wavephotonics2";
       ExecStart = ''
         ${pkgs.goofys}/bin/goofys \
