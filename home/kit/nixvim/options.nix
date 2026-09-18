@@ -31,7 +31,15 @@
     };
     opts = {
       backup = false;
-      clipboard = "unnamedplus"; # allows neovim to access the system clipboard
+      clipboard = {
+        providers = {
+          xsel.enable = true; # For X11
+        };
+
+        # Sync clipboard between OS and Neovim
+        #  Remove this option if you want your OS clipboard to remain independent.
+        register = "unnamedplus";
+      };
       cmdheight = 2; # more space in the neovim command line for displaying messages
       # completeopt = { "menuone", "noselect" }, # mostly just for cmp
       conceallevel = 0; # so that `` is visible in markdown files

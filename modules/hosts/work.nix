@@ -10,9 +10,11 @@
     userFile = "wsl-user.yaml";
   };
 in {
-  flake-file.inputs.nix-secrets = {
-    url = "git+ssh://git@github.com/cgubbin/nix-secrets.git";
-    flake = false;
+  flake-file.inputs = {
+    nix-secrets = {
+      url = "git+ssh://git@github.com/cgubbin/nix-secrets.git";
+      flake = false;
+    };
   };
 
   flake.modules.nixos."work" = {
