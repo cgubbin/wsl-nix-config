@@ -449,11 +449,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1789660740,
-        "narHash": "sha256-OR5y7TcP/qLBz/eatneZEDHiGUGxLBdeKasDyOwuQdc=",
+        "lastModified": 1789726628,
+        "narHash": "sha256-P+L/Wisyb4WnClnMa/PC9D7TNV/Z69d0V7BjZ4abYHg=",
         "owner": "wave-photonics",
         "repo": "nix-wsl-template",
-        "rev": "e30e549508634a44799d3687d93d7826fbfcff2a",
+        "rev": "23379886be1437a38c86eb854603190f49894fc2",
         "type": "github"
       },
       "original": {

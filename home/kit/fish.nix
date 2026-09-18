@@ -903,9 +903,9 @@
       aws = lib.getExe config.programs.awscli.package;
     in {
       which = "readlink -f (type -p $argv)";
-      rebuild-dagon = "cd /home/kit/nixos-config && nixos-rebuild switch --flake .#work --target-host kit@work --use-remote-sudo --impure";
-      rebuild-sys = "${nh} os switch /home/kit/nixos-config";
-      update-sys = "${nh} os switch /home/kit/nixos-config --update";
+      rebuild-kit = "cd /home/kit/config && nixos-rebuild switch --flake .#work --target-host kit@work --use-remote-sudo --impure";
+      rebuild-sys = "${nh} os switch /home/kit/config";
+      update-sys = "${nh} os switch /home/kit/confi --update";
 
       vim = "nvim";
 
@@ -960,6 +960,10 @@
 
     interactiveShellInit = ''
       # Open command buffer in vim when alt+e is pressed
+      set -gx EDITOR ${lib.getExe config.programs.nixvim.build.package}
+      set -gx VISUAL ${lib.getExe config.programs.nixvim.build.package}
+      set -gx KREW_ROOT ${config.home.homeDirectory}/.krew
+      fish_add_path ${config.home.homeDirectory}/.krew/bin
       bind \ee edit_command_buffer
       fish_vi_key_bindings
       if status is-interactive
