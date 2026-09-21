@@ -1,4 +1,3 @@
-# home/kit/kuiui.nix
 {
   config,
   lib,
@@ -9,7 +8,7 @@
 in {
   home.packages = [pkgs.gh]; # needed to run gh release download
 
-  home.activation.installKuiui = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.installKuiui = lib.hm.dag.entryAfter ["writeBoundary" "sops-nix"] ''
     mkdir -p "${binDir}"
     if [ ! -x "${binDir}/kuiui" ]; then
       export GH_TOKEN=$(cat ${config.sops.secrets."github-token".path})
