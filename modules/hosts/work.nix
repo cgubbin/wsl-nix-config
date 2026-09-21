@@ -71,9 +71,21 @@ in {
           '';
 
           sops.secrets."k8s-oidc-client-secret" = {};
-          sops.templates."kubeconfig-oidc-user".content = ''
+          sops.templates."kubeconfig".path = "${config.home.homeDirectory}/.kube/config";
+          sops.templates."kubeconfig".content = ''
             apiVersion: v1
             kind: Config
+            clusters:
+              - name: my-cluster
+                cluster:
+                  server: https://<your-cluster-api-server>
+                  certificate-authority-data: <base64-ca-cert, if applicable>
+            contexts:
+              - name: my-context
+                context:
+                  cluster: my-cluster
+                  user: oidc
+            current-context: my-context
             users:
               - name: oidc
                 user:
