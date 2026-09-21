@@ -51,6 +51,7 @@ in {
         {config, ...}: {
           sops.secrets."netrc".path = "${config.home.homeDirectory}/.netrc";
           sops.secrets."do-spaces-credentials".path = "${config.home.homeDirectory}/.aws/credentials";
+          sops.secrets."github-token".path = "${config.home.homeDirectory}/.config/github-token";
 
           sops.secrets."do-spaces-access-key" = {};
           sops.secrets."do-spaces-secret-key" = {};

@@ -302,11 +302,11 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1789663223,
-        "narHash": "sha256-acEhEiBSbmNDisRpHBbGjKL2eklSCsVoohvrpc1+QuQ=",
+        "lastModified": 1789994111,
+        "narHash": "sha256-sVnyQyUDBT9ClPU7/hNN2VciOmeysNQOXYSNwuXtsMk=",
         "ref": "refs/heads/main",
-        "rev": "f275ca4b7ef26490153a5faf6b362a7c6f7bdb84",
-        "revCount": 11,
+        "rev": "803eca94e4d436dfd1927dc8f2cb94f1d9b26860",
+        "revCount": 12,
         "type": "git",
         "url": "ssh://git@github.com/cgubbin/nix-secrets.git"
       },
