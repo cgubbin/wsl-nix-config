@@ -257,6 +257,7 @@ in {
             })
           end
 
+
           vim.opt_local.wrap = true
           vim.opt_local.spell = true
           vim.opt_local.conceallevel = 2
@@ -288,6 +289,7 @@ in {
           end, "Run visual range")
 
           -- Molten output controls
+          map("n", "<localleader>me", "<cmd>noautocmd MoltenExportOutput<cr>", "Molten export output")
           map("n", "<localleader>mo", "<cmd>noautocmd MoltenEnterOutput<cr>", "Molten open output")
           map("n", "<localleader>mh", "<cmd>MoltenHideOutput<cr>", "Molten hide output")
           map("n", "<localleader>md", "<cmd>MoltenDelete<cr>", "Molten delete cell")
@@ -336,6 +338,15 @@ in {
             vim.opt_local.wrap = true
             vim.opt_local.spell = true
             vim.opt_local.conceallevel = 2
+          end
+        '';
+      }
+      {
+        event = "BufWritePost";
+        pattern = ["*.ipynb"];
+        callback.__raw = ''
+          function()
+              pcall(vim.cmd, "MoltenExportOutput")
           end
         '';
       }

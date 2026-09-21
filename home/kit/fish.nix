@@ -963,6 +963,7 @@
       set -gx EDITOR ${lib.getExe config.programs.nixvim.build.package}
       set -gx VISUAL ${lib.getExe config.programs.nixvim.build.package}
       set -gx KREW_ROOT ${config.home.homeDirectory}/.krew
+      set -gx KUBE_EDITOR ${lib.getExe config.programs.nixvim.build.package}
       fish_add_path ${config.home.homeDirectory}/.krew/bin
       bind \ee edit_command_buffer
       fish_vi_key_bindings
