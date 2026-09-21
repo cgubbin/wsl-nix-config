@@ -17,7 +17,7 @@ in {
     };
   };
 
-  flake.modules.nixos."work" = {
+  flake.modules.nixos."work" = {pkgs, ...}: {
     imports = [
       sops.nixos
       (inputs.starter.lib.mkSopsPasswordUser {username = "kit";})
@@ -34,6 +34,15 @@ in {
     programs.fuse = {
       enable = true;
       userAllowOther = true;
+    };
+
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib # common baseline most dynamically-linked binaries need (libstdc++, etc.)
+        zlib
+        openssl
+      ];
     };
 
     nixpkgs.config.allowUnfreePredicate = pkg:
@@ -59,6 +68,27 @@ in {
           sops.templates."do-spaces-env".content = ''
             set -gx SPACES_KEY ${config.sops.placeholder."do-spaces-access-key"}
             set -gx SPACES_SECRET ${config.sops.placeholder."do-spaces-secret-key"}
+          '';
+
+          sops.secrets."k8s-oidc-client-secret" = {};
+          sops.templates."kubeconfig-oidc-user".content = ''
+            apiVersion: v1
+            kind: Config
+            users:
+              - name: oidc
+                user:
+                  exec:
+                    apiVersion: client.authentication.k8s.io/v1
+                    interactiveMode: Never
+                    command: kubectl
+                    args:
+                      - oidc-login
+                      - get-token
+                      - --oidc-issuer-url=https://sts.windows.net/d2c7365c-6bb2-4c6d-b977-c428d1fc55d9/
+                      - --oidc-client-id=9efea7dd-7971-47c4-b064-7197ab6aab8d
+                      - --oidc-client-secret=${config.sops.placeholder."k8s-oidc-client-secret"}
+                      - --oidc-extra-scope=groups
+                      - --oidc-extra-scope=email
           '';
         }
       )

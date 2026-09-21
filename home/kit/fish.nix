@@ -965,6 +965,7 @@
       set -gx KREW_ROOT ${config.home.homeDirectory}/.krew
       set -gx KUBE_EDITOR ${lib.getExe config.programs.nixvim.build.package}
       fish_add_path ${config.home.homeDirectory}/.krew/bin
+      fish_add_path ${config.home.homeDirectory}/.local/bin
       bind \ee edit_command_buffer
       fish_vi_key_bindings
       if status is-interactive
