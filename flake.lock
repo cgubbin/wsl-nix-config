@@ -340,11 +340,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1789754019,
-        "narHash": "sha256-7+84DhBGFnWO5vJE6YPtx0VkY/33lblL/dzziI5pod0=",
-        "rev": "2e032a04454b525daa6c6651264aaa5d3e98cf54",
+        "lastModified": 1790055231,
+        "narHash": "sha256-wQZif6Lyrg1IDl8k68Gwa3OK9PermeRsjdKgso4K1VA=",
+        "rev": "b6c98e9e6633ee64753b594ff4a5febf0367fc00",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1075926.2e032a04454b/nixexprs.tar.zst"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1078010.b6c98e9e6633/nixexprs.tar.zst"
       },
       "original": {
         "type": "tarball",
@@ -403,6 +403,22 @@
         "type": "github"
       }
     },
+    "quarto-sync-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790162963,
+        "narHash": "sha256-5A2Q6oPKlJhihMQ6knnGS7zSkGxo5phn6asU7d5GX2M=",
+        "ref": "refs/heads/main",
+        "rev": "620332745bde414f2ce2ee48dd4ea19e58ece825",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/cgubbin/quarto-sync.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/cgubbin/quarto-sync.git"
+      }
+    },
     "root": {
       "inputs": {
         "flake-file": "flake-file",
@@ -411,6 +427,7 @@
         "nix-secrets": "nix-secrets",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "quarto-sync-nvim": "quarto-sync-nvim",
         "starter": "starter"
       }
     },

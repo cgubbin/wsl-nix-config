@@ -298,8 +298,14 @@ in {
           -- Quarto document commands
           map("n", "<localleader>qp", "<cmd>QuartoPreview<cr>", "Quarto preview")
           map("n", "<localleader>qr", "<cmd>QuartoRender<cr>", "Quarto render")
+
+          map("n", "<localleader>rp", function()
+            local dir = vim.fn.expand("%:p:h")
+            local name = vim.fn.expand("%:t")
+            vim.cmd("QuartoSyncPreview " .. vim.fn.fnameescape(dir .. "/copy-of-" .. name))
+          end, "Preview with cell sync")
         end,
-      })
+                })
     '';
 
     keymaps = [
@@ -347,6 +353,29 @@ in {
         callback.__raw = ''
           function()
               pcall(vim.cmd, "MoltenExportOutput")
+          end
+        '';
+      }
+      {
+        event = "FileType";
+        pattern = ["quarto" "markdown"];
+        once = true; # load + start the server once per session, not per buffer
+        callback.__raw = ''
+          function()
+            require("quarto-sync").setup({ auto_start = true })
+          end
+        '';
+      }
+      {
+        event = "FileType";
+        pattern = ["quarto" "markdown"];
+        callback.__raw = ''
+          function(args)
+            vim.keymap.set("n", "<localleader>rp", function()
+              local dir = vim.fn.expand("%:p:h")
+              local name = vim.fn.expand("%:t")
+              vim.cmd("QuartoSyncPreview " .. vim.fn.fnameescape(dir .. "/copy-of-" .. name))
+            end, { buffer = args.buf, desc = "Preview with cell sync" })
           end
         '';
       }

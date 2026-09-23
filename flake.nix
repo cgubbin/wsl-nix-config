@@ -19,6 +19,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quarto-sync-nvim = {
+      url = "git+ssh://git@github.com/cgubbin/quarto-sync.git";
+      flake = false;
+    };
     starter.url = "github:wave-photonics/nix-wsl-template";
   };
 }

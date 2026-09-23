@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.nushell = {
     enable = true;
 
@@ -36,6 +36,15 @@
       highlight_resolved_externals = true;
       buffer_editor = "nvim";
     };
+
+    plugins = [
+      pkgs.nushellPlugins.gstat
+      pkgs.nushellPlugins.highlight
+      pkgs.nushellPlugins.polars
+      pkgs.nushellPlugins.query
+      pkgs.nushellPlugins.skim
+      pkgs.nushellPlugins.units
+    ];
 
     shellAliases = {
       ll = "ls -la";

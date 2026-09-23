@@ -1,9 +1,17 @@
 {
   lib,
   config,
+  inputs,
+  pkgs,
   ...
 }: {
   programs.nixvim = {
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "quarto-sync-nvim";
+        src = inputs.quarto-sync-nvim;
+      })
+    ];
     extraFiles = {
       # Lua config
       "lua/kit/functions/utils.lua".source = ./lua/kit/functions/utils.lua;

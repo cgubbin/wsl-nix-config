@@ -1,7 +1,13 @@
 {inputs, ...}: {
-  flake-file.inputs.nixvim = {
-    url = "github:nix-community/nixvim";
-    inputs.nixpkgs.follows = "nixpkgs";
+  flake-file.inputs = {
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quarto-sync-nvim = {
+      url = "git+ssh://git@github.com/cgubbin/quarto-sync.git";
+      flake = false; # it's a plain vim plugin, not a flake itself
+    };
   };
 
   flake.modules.nixos."kit" = {
