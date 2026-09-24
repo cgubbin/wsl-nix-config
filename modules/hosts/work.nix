@@ -57,7 +57,12 @@ in {
     home-manager.sharedModules = [
       sops.homeManager
       (
-        {config, ...}: {
+        {
+          config,
+          lib,
+          pkgs,
+          ...
+        }: {
           sops.secrets."netrc".path = "${config.home.homeDirectory}/.netrc";
           sops.secrets."do-spaces-credentials".path = "${config.home.homeDirectory}/.aws/credentials";
           sops.secrets."github-token".path = "${config.home.homeDirectory}/.config/github-token";
@@ -104,6 +109,18 @@ in {
                       - --oidc-client-secret=${config.sops.placeholder."k8s-oidc-client-secret"}
                       - --oidc-extra-scope=groups
                       - --oidc-extra-scope=email
+          '';
+
+          # home.activation.mergeKubeconfigs = lib.hm.dag.entryAfter ["writeBoundary" "sops-nix"] ''
+          #   mkdir -p ${config.home.homeDirectory}/.kube
+          #   $DRY_RUN_CMD env KUBECONFIG=${config.sops.templates."kubeconfig-base".path} ${pkgs.kubectl}/bin/kubectl config view --flatten > ${config.home.homeDirectory}/.kube/config
+          #   $DRY_RUN_CMD chmod 644 ${config.home.homeDirectory}/.kube/config
+          # '';
+          home.activation.mergeKubeconfigs = lib.hm.dag.entryAfter ["writeBoundary" "sops-nix"] ''
+            mkdir -p ${config.home.homeDirectory}/.kube
+            $DRY_RUN_CMD env KUBECONFIG=${config.sops.templates."kubeconfig-base".path} ${pkgs.kubectl}/bin/kubectl config view --flatten > ${config.home.homeDirectory}/.kube/config 2> ${config.home.homeDirectory}/.kube/merge-error.log
+            echo "merge exit: $?" >> ${config.home.homeDirectory}/.kube/merge-error.log
+            $DRY_RUN_CMD chmod 644 ${config.home.homeDirectory}/.kube/config
           '';
         }
       )
