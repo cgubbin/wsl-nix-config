@@ -71,16 +71,16 @@ in {
           '';
 
           sops.secrets."k8s-oidc-client-secret" = {};
-          sops.templates."kubeconfig".path = "${config.home.homeDirectory}/.kube/config";
-          sops.templates."kubeconfig".content = ''
+          sops.templates."kubeconfig-base".path = "${config.home.homeDirectory}/.kube/config-base";
+          sops.templates."kubeconfig-base".content = ''
             apiVersion: v1
             kind: Config
             preferences: {}
             clusters:
               - name: erebus
                 cluster:
-                  server: https://192.168.5.21:6443/
-                  certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTkRReE1UQTBOakF3SGhjTk1qVXdOREE0TVRFd056UXdXaGNOTXpVd05EQTJNVEV3TnpRdwpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTkRReE1UQTBOakF3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSTnBNQVVBWmhzMVNXeDNhaGhjYkppY0UrMnRCTTgrd1RvWklGZWI4MTcKQWlNb21hOVFURytkUU0xbDJyYlhnN1pJaisyMm9XRlpDc1J3MVZ2NzdpQUpvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVWNnZkYvUlE0TWdnelQyMlhzdjIrClNCdjh5ZTB3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnUll4bUczbEtjL2szRGJxTk1Ndm54bDNY
+                  server: https://192.168.5.21:6443
+                  certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTkRReE1UQTBOakF3SGhjTk1qVXdOREE0TVRFd056UXdXaGNOTXpVd05EQTJNVEV3TnpRdwpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTkRReE1UQTBOakF3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSTnBNQVVBWmhzMVNXeDNhaGhjYkppY0UrMnRCTTgrd1RvWklGZWI4MTcKQWlNb21hOVFURytkUU0xbDJyYlhnN1pJaisyMm9XRlpDc1J3MVZ2NzdpQUpvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVWNnZkYvUlE0TWdnelQyMlhzdjIrClNCdjh5ZTB3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnUll4bUczbEtjL2szRGJxTk1Ndm54bDNYMHRUcmVJZ2cKWUVrbW5lT0RXVElDSVFDdHJySXIvaG1KM0gxZFBnMFNEc2pENTd1QXJ2UzMzckJTZWdLUVl1VjdkZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
             contexts:
               - name: erebus
                 context:
