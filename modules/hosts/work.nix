@@ -75,17 +75,18 @@ in {
           sops.templates."kubeconfig".content = ''
             apiVersion: v1
             kind: Config
+            preferences: {}
             clusters:
-              - name: my-cluster
+              - name: erebus
                 cluster:
-                  server: https://<your-cluster-api-server>
-                  certificate-authority-data: <base64-ca-cert, if applicable>
+                  server: https://192.168.5.21:6443/
+                  certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTkRReE1UQTBOakF3SGhjTk1qVXdOREE0TVRFd056UXdXaGNOTXpVd05EQTJNVEV3TnpRdwpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTkRReE1UQTBOakF3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSTnBNQVVBWmhzMVNXeDNhaGhjYkppY0UrMnRCTTgrd1RvWklGZWI4MTcKQWlNb21hOVFURytkUU0xbDJyYlhnN1pJaisyMm9XRlpDc1J3MVZ2NzdpQUpvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVWNnZkYvUlE0TWdnelQyMlhzdjIrClNCdjh5ZTB3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnUll4bUczbEtjL2szRGJxTk1Ndm54bDNY
             contexts:
-              - name: my-context
+              - name: erebus
                 context:
-                  cluster: my-cluster
+                  cluster: erebus
                   user: oidc
-            current-context: my-context
+            current-context: erebus
             users:
               - name: oidc
                 user:
@@ -93,6 +94,8 @@ in {
                     apiVersion: client.authentication.k8s.io/v1
                     interactiveMode: Never
                     command: kubectl
+                    env: null
+                    provideClusterInfo: false
                     args:
                       - oidc-login
                       - get-token
