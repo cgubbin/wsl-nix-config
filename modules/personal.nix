@@ -1,3 +1,3 @@
 {...}: {
-  flake-file.inputs.starter.url = "github:wave-photonics/nix-wsl-template";
+  flake-file.inputs.starter.url = "git+ssh://git@github.com/wave-photonics/nix-wsl-template.git";
 }

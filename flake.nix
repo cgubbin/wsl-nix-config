@@ -23,6 +23,6 @@
       url = "git+ssh://git@github.com/cgubbin/quarto-sync.git";
       flake = false;
     };
-    starter.url = "github:wave-photonics/nix-wsl-template";
+    starter.url = "git+ssh://git@github.com/wave-photonics/nix-wsl-template.git";
   };
 }

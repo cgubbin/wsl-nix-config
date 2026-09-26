@@ -111,17 +111,23 @@ in {
                       - --oidc-extra-scope=email
           '';
 
-          # home.activation.mergeKubeconfigs = lib.hm.dag.entryAfter ["writeBoundary" "sops-nix"] ''
-          #   mkdir -p ${config.home.homeDirectory}/.kube
-          #   $DRY_RUN_CMD env KUBECONFIG=${config.sops.templates."kubeconfig-base".path} ${pkgs.kubectl}/bin/kubectl config view --flatten > ${config.home.homeDirectory}/.kube/config
-          #   $DRY_RUN_CMD chmod 644 ${config.home.homeDirectory}/.kube/config
-          # '';
-          home.activation.mergeKubeconfigs = lib.hm.dag.entryAfter ["writeBoundary" "sops-nix"] ''
-            mkdir -p ${config.home.homeDirectory}/.kube
-            $DRY_RUN_CMD env KUBECONFIG=${config.sops.templates."kubeconfig-base".path} ${pkgs.kubectl}/bin/kubectl config view --flatten > ${config.home.homeDirectory}/.kube/config 2> ${config.home.homeDirectory}/.kube/merge-error.log
-            echo "merge exit: $?" >> ${config.home.homeDirectory}/.kube/merge-error.log
-            $DRY_RUN_CMD chmod 644 ${config.home.homeDirectory}/.kube/config
-          '';
+          systemd.user.services.merge-kubeconfig = {
+            Unit = {
+              Description = "Merge sops-rendered kubeconfig into ~/.kube/config";
+              After = ["sops-nix.service"];
+              Requires = ["sops-nix.service"];
+            };
+            Service = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+              ExecStart = "${pkgs.writeShellScript "merge-kubeconfig" ''
+                mkdir -p ${config.home.homeDirectory}/.kube
+                ${pkgs.kubectl}/bin/kubectl --kubeconfig=${config.sops.templates."kubeconfig-base".path} config view --flatten > ${config.home.homeDirectory}/.kube/config
+                chmod 644 ${config.home.homeDirectory}/.kube/config
+              ''}";
+            };
+            Install.WantedBy = ["default.target"];
+          };
         }
       )
     ];
