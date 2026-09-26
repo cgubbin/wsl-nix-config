@@ -133,6 +133,7 @@ in {
     ];
 
     wsl = {
+      interop.register = true;
       wslConf = {
         network.hostname = "work";
       };
