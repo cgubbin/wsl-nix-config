@@ -8,6 +8,9 @@
       url = "git+ssh://git@github.com/cgubbin/quarto-sync.git";
       flake = false; # it's a plain vim plugin, not a flake itself
     };
+    workbench = {
+      url = "git+file:///home/kit/workbench";
+    };
   };
 
   flake.modules.nixos."kit" = {
