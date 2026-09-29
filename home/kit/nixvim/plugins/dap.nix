@@ -90,12 +90,26 @@ in {
             args = [];
           }
         ];
+        python = [
+          {
+            type = "python";
+            request = "launch";
+            name = "Launch file";
+            program = "\${file}";
+            pythonPath = helpers.mkRaw ''
+              function()
+                  return _G.python_env.resolve_python()
+              end
+            '';
+          }
+        ];
       };
     };
 
     extraPlugins = with pkgs.vimPlugins; [
       nvim-dap-ui
       nvim-nio
+      nvim-dap-python
     ];
 
     extraPackages = with pkgs; [
@@ -121,6 +135,15 @@ in {
         command = vim.fn.exepath("lldb-dap"),
         name = "lldb",
       }
+
+
+      dap.adapters.python = function(callback, config)
+        callback({
+          type = "executable",
+          command = "${pkgs.python314.withPackages (ps: [ps.debugpy])}/bin/python",
+          args = { "-m", "debugpy.adapter" },
+        })
+      end
 
       dapui.setup({
         icons = { expanded = "▾", collapsed = "▸" },

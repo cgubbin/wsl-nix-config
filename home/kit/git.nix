@@ -42,5 +42,13 @@
       pull.rebase = true;
       rebase.autoStash = true;
     };
+
+    ignores = [
+      ".envrc"
+      ".direnv/"
+      ".jupyter-local/"
+      ".quarto/"
+      ".wbpy"
+    ];
   };
 }

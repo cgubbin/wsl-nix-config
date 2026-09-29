@@ -9,6 +9,22 @@
     functions = let
       zellij = lib.getExe pkgs.zellij;
     in {
+      rgf = {
+        description = "Live grep with ripgrep + fzf, preview with bat";
+        body = ''
+          set -l rg_cmd "rg --column --line-number --no-heading --color=always --smart-case"
+          set -l editor vim
+          set -q EDITOR; and set editor $EDITOR
+
+          fzf --ansi --disabled --query (string join ' ' -- $argv) \
+            --delimiter : \
+            --bind "start:reload:$rg_cmd {q} || true" \
+            --bind "change:reload:sleep 0.1; $rg_cmd {q} || true" \
+            --preview 'bat --color=always --style=numbers,header --highlight-line {2} {1}' \
+            --preview-window 'up,60%,border-bottom,+{2}+3/3' \
+            --bind "enter:become($editor {1} +{2})"
+        '';
+      };
       fish_prompt.body = ''
         set -l last_status $status
 
@@ -967,6 +983,8 @@
       fish_add_path ${config.home.homeDirectory}/.krew/bin
       fish_add_path ${config.home.homeDirectory}/.local/bin
       bind \ee edit_command_buffer
+      bind \cg 'rgf; commandline -f repaint'
+      bind -M insert \cg 'rgf; commandline -f repaint'
       fish_vi_key_bindings
       if status is-interactive
           and not set -q ZELLIJ

@@ -47,6 +47,8 @@ in {
           yamlls.enable = true;
           clangd.enable = true;
           cmake.enable = true;
+
+          nushell.enable = true;
         };
       };
 

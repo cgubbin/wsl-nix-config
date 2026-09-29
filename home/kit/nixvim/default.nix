@@ -9,6 +9,7 @@
     ./keymappings.nix
     ./options.nix
     ./plugins
+    ./python-env.nix
     ./themes.nix
   ];
 

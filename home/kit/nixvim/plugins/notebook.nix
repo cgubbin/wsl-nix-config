@@ -1,10 +1,4 @@
 {
-  config,
-  pkgs,
-  ...
-}: let
-  helpers = config.lib.nixvim;
-in {
   programs.nixvim = {
     plugins = {
       quarto = {

@@ -49,6 +49,7 @@ in {
       builtins.elem (inputs.nixpkgs.lib.getName pkg) [
         "obsidian"
         "terraform"
+        "claude-code"
         "jupytext.nvim"
         "wezterm.nvim"
       ];
