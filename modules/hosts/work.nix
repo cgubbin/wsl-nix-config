@@ -55,16 +55,23 @@ in {
       ];
     home-manager.useGlobalPkgs = true; # makes home-manager use the system's pkgs, config included
 
+    sops.secrets.netrc = {
+      mode = "0440";
+      group = "nixbld"; # the group Nix's build users belong to
+    };
+    nix.settings.extra-sandbox-paths = ["/run/secrets/netrc"];
+
     home-manager.sharedModules = [
       sops.homeManager
       (
         {
           config,
-          lib,
           pkgs,
           ...
         }: {
-          sops.secrets."netrc".path = "${config.home.homeDirectory}/.netrc";
+          sops.secrets."netrc" = {
+            path = "${config.home.homeDirectory}/.netrc";
+          };
           sops.secrets."do-spaces-credentials".path = "${config.home.homeDirectory}/.aws/credentials";
           sops.secrets."github-token".path = "${config.home.homeDirectory}/.config/github-token";
 
