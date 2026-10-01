@@ -555,11 +555,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1790866601,
-        "narHash": "sha256-XHQzTTmXeZbLK/5EL8xsPO9yqEwFftM0Wh9LSOTeU+I=",
+        "lastModified": 1790867584,
+        "narHash": "sha256-wMeipivKMKcbCsJ72lFs9UbQoqGH7YsfAsMf/TI6PlA=",
         "ref": "refs/heads/main",
-        "rev": "927676cb8d1e8f782239278ceb8a5b16a58dcacd",
-        "revCount": 13,
+        "rev": "6a8adbc3116e8764ef5a2bee17101a0a7e0477c4",
+        "revCount": 15,
         "type": "git",
         "url": "file:///home/kit/workbench"
       },
