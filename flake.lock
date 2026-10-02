@@ -171,11 +171,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788450739,
-        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
+        "lastModified": 1790898470,
+        "narHash": "sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
+        "rev": "024633cd702b10285db5cb19b40ad48d2399ba60",
         "type": "github"
       },
       "original": {
@@ -265,11 +265,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1790241846,
-        "narHash": "sha256-rmHQtarWvZxm3/dVuIkUWe0HjWfVGX8+OyaJoHIR8Jo=",
+        "lastModified": 1790918187,
+        "narHash": "sha256-F3py52yPDHBSKKkx4CzpTMc5KxzCBT+jLUIRNOYpr4Q=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "8bec0ce1cbb0a39f8f08dc97a7635af847779f99",
+        "rev": "20762f12777a611184868a1a4408bc42a014adf1",
         "type": "github"
       },
       "original": {
@@ -353,11 +353,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1790178388,
-        "narHash": "sha256-kK3t7gwoz4Nx8RF46cs1Xz/skKNcK7y3KYP+gGqX6W8=",
+        "lastModified": 1790600678,
+        "narHash": "sha256-6k3n7X2UsZ6tAlWTz99RimiZab+17tMUrw9sRUcELiA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "00455b0a3690d3f5dc61e9aef4277dc86235b73f",
+        "rev": "f45c6f04c2f013f004bf94e284e95d72898d9393",
         "type": "github"
       },
       "original": {
@@ -483,11 +483,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1790247096,
-        "narHash": "sha256-y8+W+h0O8VB6yFX7U+UfZwy1UL+1NzY3qJcuGiQWSvM=",
+        "lastModified": 1790944840,
+        "narHash": "sha256-cTEwCmfmThoZR1YEqGevQmlQ5mYtVa2rB3PCjKy8xIU=",
         "ref": "refs/heads/main",
-        "rev": "610e3f0d3778490c26f39dcbd58182a737ad5318",
-        "revCount": 24,
+        "rev": "7c5d546bc369d0e428332b4684e9feaa68e1eb91",
+        "revCount": 29,
         "type": "git",
         "url": "ssh://git@github.com/wave-photonics/nix-wsl-template.git"
       },
@@ -555,11 +555,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1790867584,
-        "narHash": "sha256-wMeipivKMKcbCsJ72lFs9UbQoqGH7YsfAsMf/TI6PlA=",
+        "lastModified": 1790869051,
+        "narHash": "sha256-8wPnwYnRVbKEFCCJ7IiffBDmsly8pqvfzsXboXAcMOI=",
         "ref": "refs/heads/main",
-        "rev": "6a8adbc3116e8764ef5a2bee17101a0a7e0477c4",
-        "revCount": 15,
+        "rev": "a36b0327d5f5f496a8f08370be4e9f24cab22924",
+        "revCount": 16,
         "type": "git",
         "url": "file:///home/kit/workbench"
       },

@@ -33,11 +33,11 @@
 
   flake.modules.homeManager."kit" = {
     imports = [
-      inputs.starter.modules.homeManager.claude-code
       inputs.starter.modules.homeManager.cli-tools
       inputs.starter.modules.homeManager.cloud-tools
       inputs.starter.modules.homeManager.direnv
       inputs.starter.modules.homeManager.git
+      inputs.starter.modules.homeManager.llm-tools
       (inputs.import-tree ../../home/kit)
     ];
   };
