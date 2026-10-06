@@ -12,6 +12,8 @@ in {
 
       yq-go
       jq
+      jd-diff-patch
+      jiq
       just
       eza
       fd

@@ -14,7 +14,7 @@
     inputs.starter.inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.mindwalk
     inputs.starter.inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.openresearch
     inputs.starter.inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.openspec
-    inputs.starter.inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.oh-my-claudecode
+    # inputs.starter.inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.oh-my-claudecode
     inputs.starter.inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
   ];
 }
