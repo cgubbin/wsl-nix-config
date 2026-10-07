@@ -11,6 +11,9 @@
     workbench = {
       url = "git+file:///home/kit/workbench";
     };
+    stylix = {
+      url = "github:danth/stylix";
+    };
   };
 
   flake.modules.nixos."kit" = {
