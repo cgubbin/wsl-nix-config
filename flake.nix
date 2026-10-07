@@ -24,6 +24,7 @@
       flake = false;
     };
     starter.url = "git+ssh://git@github.com/wave-photonics/nix-wsl-template.git";
+    stylix.url = "github:danth/stylix";
     workbench.url = "git+file:///home/kit/workbench";
   };
 }

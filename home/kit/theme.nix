@@ -2,7 +2,11 @@
   config,
   pkgs,
   ...
-}: {
+} @ args: {
+  imports = [
+    # Safely pull the module from args to avoid the naming clash
+    args.inputs.stylix.homeModules.stylix
+  ];
   # Configure the global CLI theme engine
   config = {
     stylix = {
@@ -18,15 +22,6 @@
 
       # Automatically theme bottom, git, tmux, and your shells
       autoEnable = true;
-
-      # Inject terminal-safe text renderings
-      # fonts = {
-      #   monospace = {
-      #     package = pkgs.nerd-fonts.fira-code;
-      #     name = "FiraCode Nerd Font";
-      #   };
-      #   size = 12;
-      # };
     };
   };
 }
