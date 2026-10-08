@@ -4,7 +4,7 @@ in {
   programs.nixvim = {
     plugins.treesitter = {
       enable = true;
-      grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
+      grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
         bash
         c
         cmake
