@@ -20,6 +20,8 @@
     impureRtp = true;
     withPython3 = true;
 
+    # stylix.enable = true;
+
     nixpkgs.useGlobalPackages = true;
   };
 }

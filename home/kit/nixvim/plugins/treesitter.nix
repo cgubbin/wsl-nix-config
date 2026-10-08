@@ -1,13 +1,29 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   helpers = config.lib.nixvim;
 in {
   programs.nixvim = {
     plugins.treesitter = {
       enable = true;
+      grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
+        bash
+        c
+        cmake
+        cpp
+        csv
+        fish
+        json
+        lua
+        markdown
+        markdown_inline
+        nix
+        python
+        regex
+        rust
+        sql
+        toml
+        vim
+        yaml
+      ];
       settings = {
         highlight = {
           enable = true;
