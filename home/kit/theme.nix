@@ -22,6 +22,24 @@
 
       # Automatically theme bottom, git, tmux, and your shells
       autoEnable = true;
+
+      targets = {
+        # Disable desktop environments that require D-Bus activation hooks
+        gnome.enable = false;
+        kde.enable = false;
+        xfce.enable = false;
+        eog.enable = false;
+        gnome-text-editor.enable = false;
+        rofi.enable = false;
+
+        # Disable global GTK/Qt themes (these break on headless WSL)
+        gtk.enable = false;
+        qt.enable = false;
+
+        # Optional: Disable notification frameworks if you use them
+        dunst.enable = false;
+        mako.enable = false;
+      };
     };
   };
 }

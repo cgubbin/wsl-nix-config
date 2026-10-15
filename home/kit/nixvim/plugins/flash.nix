@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
-
-let
-  helpers = config.lib.nixvim;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  helpers = config.lib.nixvim;
+in {
   programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [
       flash-nvim
@@ -29,7 +30,7 @@ in
 
     keymaps = [
       {
-        mode = [ "n" "x" "o" ];
+        mode = ["n" "x" "o"];
         key = "s";
         action = helpers.mkRaw ''
           function() require("flash").jump() end
@@ -37,12 +38,26 @@ in
         options.desc = "Flash";
       }
       {
-        mode = [ "n" "x" "o" ];
+        mode = ["n" "x" "o"];
         key = "S";
         action = helpers.mkRaw ''
           function() require("flash").treesitter() end
         '';
         options.desc = "Flash Treesitter";
+      }
+      {
+        mode = ["n" "x" "o"];
+        key = "<C-space>";
+        action = helpers.mkRaw ''
+          function() require("flash").treesitter( {
+              actions = {
+                ["<c-space>"] = "next",
+                ["<BS>"] = "prev"
+              }
+          })
+          end
+        '';
+        options.desc = "Flash Treesitter Incremental";
       }
       {
         mode = "o";
@@ -53,7 +68,7 @@ in
         options.desc = "Remote Flash";
       }
       {
-        mode = [ "o" "x" ];
+        mode = ["o" "x"];
         key = "R";
         action = helpers.mkRaw ''
           function() require("flash").treesitter_search() end

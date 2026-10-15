@@ -10,7 +10,7 @@
     version = "nightly";
     src = pkgs.fetchurl {
       url = "https://github.com/wezterm/wezterm/releases/download/nightly/wezterm-nightly.Ubuntu24.04.deb";
-      sha256 = "sha256-AWSWdPoEzo/0JrqIIwzKKgiVatIJh+MLpqg3FZpNDBo=";
+      sha256 = "sha256-Via+b10QkKL0SyxRAeg2MpYp/PuBE6CoGXOoYdU+uTA=";
     };
     nativeBuildInputs = [pkgs.autoPatchelfHook pkgs.dpkg];
     buildInputs = [

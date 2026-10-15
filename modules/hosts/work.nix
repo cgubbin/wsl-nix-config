@@ -27,6 +27,7 @@ in {
     home-manager.users.kit.home.stateVersion = "26.05";
     networking.hostName = "work";
 
+    # programs.dconf = {enable = true;};
     services.openssh = {
       enable = true;
     };
