@@ -11,6 +11,10 @@
     workbench = {
       url = "git+file:///home/kit/workbench";
     };
+    kuiui = {
+      url = "git+ssh://git@github.com/wave-photonics/kuiui.git?ref=meep_optimiser_2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:danth/stylix";
     };

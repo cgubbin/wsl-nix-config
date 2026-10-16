@@ -10,6 +10,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     import-tree.url = "github:denful/import-tree";
+    kuiui = {
+      url = "git+ssh://git@github.com/wave-photonics/kuiui.git?ref=meep_optimiser_2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-secrets = {
       url = "git+ssh://git@github.com/cgubbin/nix-secrets.git";
       flake = false;

@@ -1,19 +1,9 @@
 {
-  config,
-  lib,
+  inputs,
   pkgs,
   ...
-}: let
-  binDir = "${config.home.homeDirectory}/.local/bin";
-in {
-  home.packages = [pkgs.gh]; # needed to run gh release download
-
-  home.activation.installKuiui = lib.hm.dag.entryAfter ["writeBoundary" "sops-nix"] ''
-    mkdir -p "${binDir}"
-    if [ ! -x "${binDir}/kuiui" ]; then
-      export GH_TOKEN=$(cat ${config.sops.secrets."github-token".path})
-      $DRY_RUN_CMD ${pkgs.gh}/bin/gh release download --repo wave-photonics/kuiui --pattern "kuiui" --dir "${binDir}" --clobber
-      $DRY_RUN_CMD chmod +x "${binDir}/kuiui"
-    fi
-  '';
+}: {
+  home.packages = [
+    inputs.kuiui.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
 }
