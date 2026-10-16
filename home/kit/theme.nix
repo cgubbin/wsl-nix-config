@@ -23,6 +23,10 @@
       # Automatically theme bottom, git, tmux, and your shells
       autoEnable = true;
 
+      # Overlays set nixpkgs.overlays, which home-manager forbids
+      # under useGlobalPkgs (they only theme GNOME/GTK bits anyway)
+      overlays.enable = false;
+
       targets = {
         # Disable desktop environments that require D-Bus activation hooks
         gnome.enable = false;

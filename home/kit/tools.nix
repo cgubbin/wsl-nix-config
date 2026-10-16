@@ -29,7 +29,11 @@ in {
       killall
       wget
       tdf
-      see-cat
+      # TODO: drop once fixed upstream; vendored tree-sitter-perl's bsearch
+      # clashes with glibc 2.44's C23 _Generic macro
+      (see-cat.overrideAttrs (old: {
+        env = (old.env or {}) // {CFLAGS = "-std=gnu17";};
+      }))
       rsync
 
       hexyl
@@ -46,7 +50,10 @@ in {
       aerc
       ast-grep
       hunspell
-      semgrep
+      # TODO: drop once nixpkgs relaxes semgrep's pyjwt~=2.13 pin
+      (semgrep.overridePythonAttrs (old: {
+        pythonRelaxDeps = (old.pythonRelaxDeps or []) ++ ["pyjwt"];
+      }))
       shellcheck
       treefmt
       zathura
