@@ -11,6 +11,10 @@
     workbench = {
       url = "git+file:///home/kit/workbench";
     };
+    personal-features = {
+      url = "github:cgubbin/nix-config/fe866d6";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     kuiui = {
       url = "git+ssh://git@github.com/wave-photonics/kuiui.git?ref=meep_optimiser_2";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +44,7 @@
 
   flake.modules.homeManager."kit" = {
     imports = [
+      inputs.personal-features.modules.homeManager.shared-doom-emacs
       inputs.starter.modules.homeManager.cli-tools
       inputs.starter.modules.homeManager.cloud-tools
       inputs.starter.modules.homeManager.direnv
@@ -47,5 +52,9 @@
       inputs.starter.modules.homeManager.llm-tools
       (inputs.import-tree ../../home/kit)
     ];
+
+    knowledge.orgDirectory = "/home/kit/notes/work";
+    knowledge.enableDaemon = true;
+    knowledge.enableGraphicalIntegration = false;
   };
 }

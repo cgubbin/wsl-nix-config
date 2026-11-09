@@ -23,6 +23,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    personal-features = {
+      url = "github:cgubbin/nix-config/fe866d6";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quarto-sync-nvim = {
       url = "git+ssh://git@github.com/cgubbin/quarto-sync.git";
       flake = false;
