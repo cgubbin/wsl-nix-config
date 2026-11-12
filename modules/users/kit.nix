@@ -64,10 +64,6 @@
     knowledge.enableDaemon = true;
     knowledge.enableGraphicalIntegration = false;
 
-    # The terminal-only Emacs daemon decides tty colour depth from its own
-    # environment, not the client's. Without this, catppuccin is quantized
-    # to 256 colours and looks washed out.
-    systemd.user.services.emacs.Service.Environment = ["COLORTERM=truecolor"];
     # Home Manager defaults to leaving the daemon running across switches so
     # unsaved buffers survive; restart it instead so config changes apply.
     # Save buffers before switching.

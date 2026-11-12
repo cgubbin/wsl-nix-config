@@ -2,6 +2,7 @@
   programs.nushell = {
     enable = true;
 
+    loadSessionVariables = true;
     # Keep the declarative bits in Nix where possible.
     settings = {
       show_banner = false;
