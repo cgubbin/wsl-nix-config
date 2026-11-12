@@ -941,6 +941,9 @@
       bw = bandwhich;
       ps = procs;
 
+      # --- Emacs ---
+      em = "emacs -nw";
+
       # --- Nix Workflows ---
       nd = "nix develop";
       ns = "nix shell nixpkgs#";

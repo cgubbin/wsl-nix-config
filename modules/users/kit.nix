@@ -9,10 +9,10 @@
       flake = false; # it's a plain vim plugin, not a flake itself
     };
     workbench = {
-      url = "git+file:///home/kit/workbench";
+      url = "git+ssh://git@github.com/cgubbin/workbench.git";
     };
     personal-features = {
-      url = "github:cgubbin/nix-config/fe866d6";
+      url = "github:cgubbin/nix-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     kuiui = {
@@ -43,8 +43,15 @@
   };
 
   flake.modules.homeManager."kit" = {
+    lib,
+    pkgs,
+    ...
+  }: {
     imports = [
       inputs.personal-features.modules.homeManager.shared-doom-emacs
+      inputs.personal-features.modules.homeManager.shared-zellij
+      inputs.personal-features.modules.homeManager.shared-editor
+      inputs.nixvim.homeModules.nixvim
       inputs.starter.modules.homeManager.cli-tools
       inputs.starter.modules.homeManager.cloud-tools
       inputs.starter.modules.homeManager.direnv
@@ -56,5 +63,27 @@
     knowledge.orgDirectory = "/home/kit/notes/work";
     knowledge.enableDaemon = true;
     knowledge.enableGraphicalIntegration = false;
+
+    # The terminal-only Emacs daemon decides tty colour depth from its own
+    # environment, not the client's. Without this, catppuccin is quantized
+    # to 256 colours and looks washed out.
+    systemd.user.services.emacs.Service.Environment = ["COLORTERM=truecolor"];
+    # Home Manager defaults to leaving the daemon running across switches so
+    # unsaved buffers survive; restart it instead so config changes apply.
+    # Save buffers before switching.
+    systemd.user.services.emacs.Unit.X-RestartIfChanged = lib.mkForce true;
+    # WezTerm's COLORTERM does not cross into WSL; advertise truecolor to
+    # shells, zellij panes and nvim as well.
+    home.sessionVariables.COLORTERM = "truecolor";
+
+    sharedEditor = {
+      configDirectory = "/home/kit/system/config";
+      clipboardProvider = "xsel";
+      imageBackend = "kitty";
+      quartoSyncPackage = pkgs.vimUtils.buildVimPlugin {
+        name = "quarto-sync-nvim";
+        src = inputs.quarto-sync-nvim;
+      };
+    };
   };
 }
