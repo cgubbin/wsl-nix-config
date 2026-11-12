@@ -1,140 +1,140 @@
 {...}: {
-  programs.zellij = {
-    enable = true;
-    enableFishIntegration = false;
-  };
+  #   programs.zellij = {
+  #     enable = true;
+  #     enableFishIntegration = false;
+  #   };
 
-  # NOTE: the module only supports YAML config which is deprecated
-  home.file.zellij = {
-    target = ".config/zellij/config.kdl";
-    text = ''
-      keybinds {
-          normal clear-defaults=true {
-              // tmux
-              bind "Ctrl b" { SwitchToMode "Tmux"; }
-          }
+  #   # NOTE: the module only supports YAML config which is deprecated
+  #   home.file.zellij = {
+  #     target = ".config/zellij/config.kdl";
+  #     text = ''
+  #       keybinds {
+  #           normal clear-defaults=true {
+  #               // tmux
+  #               bind "Ctrl b" { SwitchToMode "Tmux"; }
+  #           }
 
-          tmux clear-defaults=true {
-              bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
-              bind "Esc" { SwitchToMode "Normal"; }
-              bind "g" { SwitchToMode "Locked"; }
-              bind "p" { SwitchToMode "Pane"; }
-              bind "t" { SwitchToMode "Tab"; }
-              bind "n" { SwitchToMode "Resize"; }
-              bind "h" { SwitchToMode "Move"; }
-              bind "s" { SwitchToMode "Scroll"; }
-              bind "o" { SwitchToMode "Session"; }
-              bind "q" { Quit; }
-          }
-      }
-    '';
-  };
+  #           tmux clear-defaults=true {
+  #               bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
+  #               bind "Esc" { SwitchToMode "Normal"; }
+  #               bind "g" { SwitchToMode "Locked"; }
+  #               bind "p" { SwitchToMode "Pane"; }
+  #               bind "t" { SwitchToMode "Tab"; }
+  #               bind "n" { SwitchToMode "Resize"; }
+  #               bind "h" { SwitchToMode "Move"; }
+  #               bind "s" { SwitchToMode "Scroll"; }
+  #               bind "o" { SwitchToMode "Session"; }
+  #               bind "q" { Quit; }
+  #           }
+  #       }
+  #     '';
+  #   };
 
-  xdg.configFile."zellij/layouts/default.kdl".text = ''
-    layout {
-      tab name="code" {
-        pane command="nvim" size="70%"
-        pane split_direction="vertical" size="30%" {
-          pane name="shell"
-          pane name="tasks"
-        }
-      }
-      tab name="git" {
-        pane split_direction="vertical" {
-          pane name="status"
-          pane name="shell"
-        }
-      }
-    }
-  '';
+  #   xdg.configFile."zellij/layouts/default.kdl".text = ''
+  #     layout {
+  #       tab name="code" {
+  #         pane command="nvim" size="70%"
+  #         pane split_direction="vertical" size="30%" {
+  #           pane name="shell"
+  #           pane name="tasks"
+  #         }
+  #       }
+  #       tab name="git" {
+  #         pane split_direction="vertical" {
+  #           pane name="status"
+  #           pane name="shell"
+  #         }
+  #       }
+  #     }
+  #   '';
 
-  xdg.configFile."zellij/layouts/nix.kdl".text = ''
-    layout {
-      tab name="nix" {
-        pane command="nvim" size="68%"
-        pane split_direction="vertical" size="32%" {
-          pane name="build"
-          pane name="ops"
-        }
-      }
-      tab name="git" {
-        pane split_direction="vertical" {
-          pane name="status"
-          pane name="shell"
-        }
-      }
-    }
-  '';
+  #   xdg.configFile."zellij/layouts/nix.kdl".text = ''
+  #     layout {
+  #       tab name="nix" {
+  #         pane command="nvim" size="68%"
+  #         pane split_direction="vertical" size="32%" {
+  #           pane name="build"
+  #           pane name="ops"
+  #         }
+  #       }
+  #       tab name="git" {
+  #         pane split_direction="vertical" {
+  #           pane name="status"
+  #           pane name="shell"
+  #         }
+  #       }
+  #     }
+  #   '';
 
-  xdg.configFile."zellij/layouts/python.kdl".text = ''
-    layout {
-      tab name="code" {
-        pane command="nvim" size="70%"
-        pane split_direction="vertical" size="30%" {
-          pane name="shell"
-          pane name="tests"
-        }
-      }
-      tab name="git" {
-        pane split_direction="vertical" {
-          pane name="status"
-          pane name="notes"
-        }
-      }
-    }
-  '';
+  #   xdg.configFile."zellij/layouts/python.kdl".text = ''
+  #     layout {
+  #       tab name="code" {
+  #         pane command="nvim" size="70%"
+  #         pane split_direction="vertical" size="30%" {
+  #           pane name="shell"
+  #           pane name="tests"
+  #         }
+  #       }
+  #       tab name="git" {
+  #         pane split_direction="vertical" {
+  #           pane name="status"
+  #           pane name="notes"
+  #         }
+  #       }
+  #     }
+  #   '';
 
-  xdg.configFile."zellij/layouts/rust.kdl".text = ''
-    layout {
-      tab name="code" {
-        pane command="nvim" size="65%"
-        pane split_direction="vertical" size="35%" {
-          pane name="build"
-          pane name="run"
-        }
-      }
-      tab name="git" {
-        pane split_direction="vertical" {
-          pane name="status"
-          pane name="shell"
-        }
-      }
-    }
-  '';
+  #   xdg.configFile."zellij/layouts/rust.kdl".text = ''
+  #     layout {
+  #       tab name="code" {
+  #         pane command="nvim" size="65%"
+  #         pane split_direction="vertical" size="35%" {
+  #           pane name="build"
+  #           pane name="run"
+  #         }
+  #       }
+  #       tab name="git" {
+  #         pane split_direction="vertical" {
+  #           pane name="status"
+  #           pane name="shell"
+  #         }
+  #       }
+  #     }
+  #   '';
 
-  xdg.configFile."zellij/layouts/latex.kdl".text = ''
-    layout {
-      tab name="write" {
-        pane command="nvim" size="72%"
-        pane split_direction="vertical" size="28%" {
-          pane name="render"
-          pane name="shell"
-        }
-      }
-      tab name="refs" {
-        pane split_direction="vertical" {
-          pane name="notes"
-          pane name="shell"
-        }
-      }
-    }
-  '';
+  #   xdg.configFile."zellij/layouts/latex.kdl".text = ''
+  #     layout {
+  #       tab name="write" {
+  #         pane command="nvim" size="72%"
+  #         pane split_direction="vertical" size="28%" {
+  #           pane name="render"
+  #           pane name="shell"
+  #         }
+  #       }
+  #       tab name="refs" {
+  #         pane split_direction="vertical" {
+  #           pane name="notes"
+  #           pane name="shell"
+  #         }
+  #       }
+  #     }
+  #   '';
 
-  xdg.configFile."zellij/layouts/quarto.kdl".text = ''
-    layout {
-      tab name="write" {
-        pane command="nvim" size="72%"
-        pane split_direction="vertical" size="28%" {
-          pane name="render"
-          pane name="shell"
-        }
-      }
-      tab name="refs" {
-        pane split_direction="vertical" {
-          pane name="notes"
-          pane name="shell"
-        }
-      }
-    }
-  '';
+  #   xdg.configFile."zellij/layouts/quarto.kdl".text = ''
+  #     layout {
+  #       tab name="write" {
+  #         pane command="nvim" size="72%"
+  #         pane split_direction="vertical" size="28%" {
+  #           pane name="render"
+  #           pane name="shell"
+  #         }
+  #       }
+  #       tab name="refs" {
+  #         pane split_direction="vertical" {
+  #           pane name="notes"
+  #           pane name="shell"
+  #         }
+  #       }
+  #     }
+  #   '';
 }

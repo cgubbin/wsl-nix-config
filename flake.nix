@@ -23,12 +23,16 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    personal-features = {
+      url = "github:cgubbin/nix-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quarto-sync-nvim = {
       url = "git+ssh://git@github.com/cgubbin/quarto-sync.git";
       flake = false;
     };
     starter.url = "git+ssh://git@github.com/wave-photonics/nix-wsl-template.git";
     stylix.url = "github:danth/stylix";
-    workbench.url = "git+file:///home/kit/workbench";
+    workbench.url = "git+ssh://git@github.com/cgubbin/workbench.git";
   };
 }

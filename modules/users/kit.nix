@@ -9,7 +9,11 @@
       flake = false; # it's a plain vim plugin, not a flake itself
     };
     workbench = {
-      url = "git+file:///home/kit/workbench";
+      url = "git+ssh://git@github.com/cgubbin/workbench.git";
+    };
+    personal-features = {
+      url = "github:cgubbin/nix-config";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     kuiui = {
       url = "git+ssh://git@github.com/wave-photonics/kuiui.git?ref=meep_optimiser_2";
@@ -39,7 +43,15 @@
   };
 
   flake.modules.homeManager."kit" = {
+    lib,
+    pkgs,
+    ...
+  }: {
     imports = [
+      inputs.personal-features.modules.homeManager.shared-doom-emacs
+      inputs.personal-features.modules.homeManager.shared-zellij
+      inputs.personal-features.modules.homeManager.shared-editor
+      inputs.nixvim.homeModules.nixvim
       inputs.starter.modules.homeManager.cli-tools
       inputs.starter.modules.homeManager.cloud-tools
       inputs.starter.modules.homeManager.direnv
@@ -47,5 +59,27 @@
       inputs.starter.modules.homeManager.llm-tools
       (inputs.import-tree ../../home/kit)
     ];
+
+    knowledge.orgDirectory = "/home/kit/notes/work";
+    knowledge.enableDaemon = true;
+    knowledge.enableGraphicalIntegration = false;
+
+    # Home Manager defaults to leaving the daemon running across switches so
+    # unsaved buffers survive; restart it instead so config changes apply.
+    # Save buffers before switching.
+    systemd.user.services.emacs.Unit.X-RestartIfChanged = lib.mkForce true;
+    # WezTerm's COLORTERM does not cross into WSL; advertise truecolor to
+    # shells, zellij panes and nvim as well.
+    home.sessionVariables.COLORTERM = "truecolor";
+
+    sharedEditor = {
+      configDirectory = "/home/kit/system/config";
+      clipboardProvider = "xsel";
+      imageBackend = "kitty";
+      quartoSyncPackage = pkgs.vimUtils.buildVimPlugin {
+        name = "quarto-sync-nvim";
+        src = inputs.quarto-sync-nvim;
+      };
+    };
   };
 }
