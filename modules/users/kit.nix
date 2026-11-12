@@ -69,8 +69,12 @@
     # Save buffers before switching.
     systemd.user.services.emacs.Unit.X-RestartIfChanged = lib.mkForce true;
     # WezTerm's COLORTERM does not cross into WSL; advertise truecolor to
-    # shells, zellij panes and nvim as well.
+    # shells, zellij panes, nvim and standalone `emacs -nw` as well.
     home.sessionVariables.COLORTERM = "truecolor";
+    # Session variables are sourced once per login and guarded by
+    # __HM_SESS_VARS_SOURCED, which long-lived WSL shells and zellij servers
+    # pass on, so set it in every fish shell too.
+    programs.fish.shellInit = "set -gx COLORTERM truecolor";
 
     sharedEditor = {
       configDirectory = "/home/kit/system/config";
