@@ -52,6 +52,12 @@
       inputs.personal-features.modules.homeManager.shared-zellij
       inputs.personal-features.modules.homeManager.shared-editor
       inputs.nixvim.homeModules.nixvim
+      inputs.personal-features.modules.homeManager.shared-git
+      # Core only: shared-cli / shared-cli-atuin enable offsite history sync.
+      inputs.personal-features.modules.homeManager.shared-cli-core
+      inputs.personal-features.modules.homeManager.shared-cli-review
+      # Company starter: cli-tools adds Nix linters and age (not in
+      # shared-cli-core); git adds ssh-agent, git-lfs and git-open.
       inputs.starter.modules.homeManager.cli-tools
       inputs.starter.modules.homeManager.cloud-tools
       inputs.starter.modules.homeManager.direnv
