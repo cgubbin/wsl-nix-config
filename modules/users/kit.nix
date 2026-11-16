@@ -85,7 +85,9 @@
     sharedEditor = {
       configDirectory = "/home/kit/system/config";
       clipboardProvider = "xsel";
-      imageBackend = "kitty";
+      # Windows Terminal (1.25) + Zellij display Sixel, not the Kitty protocol;
+      # notebook plots render through it.
+      imageBackend = "sixel";
       quartoSyncPackage = pkgs.vimUtils.buildVimPlugin {
         name = "quarto-sync-nvim";
         src = inputs.quarto-sync-nvim;

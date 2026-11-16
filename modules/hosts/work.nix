@@ -62,6 +62,14 @@ in {
     };
     nix.settings.extra-sandbox-paths = ["/run/secrets/netrc"];
 
+    # numtide's CI builds llm-agents (codex, claude-code, …) daily; without
+    # this cache they compile from source on every update. Key from the
+    # input's own flake nixConfig.
+    nix.settings.extra-substituters = ["https://cache.numtide.com"];
+    nix.settings.extra-trusted-public-keys = [
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
+
     home-manager.sharedModules = [
       sops.homeManager
       (
