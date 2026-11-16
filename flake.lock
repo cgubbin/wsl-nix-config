@@ -1507,11 +1507,11 @@
         "stylix": "stylix"
       },
       "locked": {
-        "lastModified": 1794735249,
-        "narHash": "sha256-42T4r8MWJUVlDqknSaIcoGfMur+ejegCLWLLMp/cvac=",
+        "lastModified": 1794829566,
+        "narHash": "sha256-m1aR63mXQcy9sr1Nn1zWdA2rOPSj55WhxMimk4mTPhw=",
         "owner": "cgubbin",
         "repo": "nix-config",
-        "rev": "d81095319a325bf2a84fee31d0167c603a54da1f",
+        "rev": "ec804d885ed8521d86fe810fbc94dd4e9a0497c9",
         "type": "github"
       },
       "original": {
