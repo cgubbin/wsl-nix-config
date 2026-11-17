@@ -1507,11 +1507,11 @@
         "stylix": "stylix"
       },
       "locked": {
-        "lastModified": 1794829566,
-        "narHash": "sha256-m1aR63mXQcy9sr1Nn1zWdA2rOPSj55WhxMimk4mTPhw=",
+        "lastModified": 1794911846,
+        "narHash": "sha256-oJMSN1DknmvVXrqjG+tgQlhUZO3zpQh/8eURbd0MTLk=",
         "owner": "cgubbin",
         "repo": "nix-config",
-        "rev": "ec804d885ed8521d86fe810fbc94dd4e9a0497c9",
+        "rev": "40bb0ed4ef7603b9ac96fa9bd7d04a7c6ba52852",
         "type": "github"
       },
       "original": {
@@ -1523,11 +1523,11 @@
     "quarto-sync-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1790183203,
-        "narHash": "sha256-P9u9UZlBxad6j5cZtrEtolghKvI3xitjFp1xjPTBDWo=",
+        "lastModified": 1794911831,
+        "narHash": "sha256-2Tez4V5C2yGXsLBLqsq0p0pyIWIMRe7FvSsSz/iq9o0=",
         "ref": "refs/heads/main",
-        "rev": "900adfa13cecd946f5a61ebe10aa39e8c662af59",
-        "revCount": 5,
+        "rev": "c2be996787e30080b69a54166d66932024bea870",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/cgubbin/quarto-sync.git"
       },
