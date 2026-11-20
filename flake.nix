@@ -31,7 +31,10 @@
       url = "git+ssh://git@github.com/cgubbin/quarto-sync.git";
       flake = false;
     };
-    starter.url = "git+ssh://git@github.com/wave-photonics/nix-wsl-template.git";
+    starter = {
+      url = "git+ssh://git@github.com/wave-photonics/nix-wsl-template.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix.url = "github:danth/stylix";
     workbench.url = "git+ssh://git@github.com/cgubbin/workbench.git";
   };
